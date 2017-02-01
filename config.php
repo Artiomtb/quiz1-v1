@@ -2,5 +2,5 @@
 
 return [
     'BlogPost' => 'Model\BlogPost',
-    'NewsPost' => 'Model\NewsPost'
+    'NewsPost' => 'Model\NewsPost',
 ];

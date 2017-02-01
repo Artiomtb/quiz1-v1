@@ -1,7 +1,5 @@
 <?php
 
-use Exceptions\ClassNotFoundException;
-use Exceptions\InvalidPostKeyException;
 use Model\Renderable;
 
 require_once 'Autoloader.php';
@@ -31,6 +29,13 @@ try {
             'content' => 'Illegal academic cheating!'
         ]
     );
+//    $newsPost = $postCreator->make(
+//        'WrongClassTest',
+//        [
+//            'title' => 'Breaking news',
+//            'content' => 'Illegal academic cheating!'
+//        ]
+//    );
 
     $posts = [$blogPost1, $blogPost2, $newsPost];
 } catch (ClassNotFoundException $e) {
@@ -52,11 +57,11 @@ try {
 <body>
 <h3>Here are all posts:</h3>
 <?php
-foreach ($posts as $post) {
-    if ($post instanceof Renderable) {
-        echo $post->render() . '<br>';
-    }
-}
+	foreach ($posts as $post) {
+		if ($post instanceof Renderable) {
+			echo $post->render() . '<br>';
+		}
+	}
 ?>
 
 </body>
