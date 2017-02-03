@@ -1,6 +1,8 @@
 <?php
 use Exceptions\ClassNotFoundException;
 use Exceptions\InvalidPostKeyException;
+use Model\Post;
+use config;
 /**
  * Created by PhpStorm.
  * User: shtoorman
@@ -9,5 +11,40 @@ use Exceptions\InvalidPostKeyException;
  */
 class PostCreator
 {
+    private static $instance = null;
 
+    /**
+     * PostCreator constructor.
+     */
+
+    private function __construct()
+    {
+        $this->_conf = require_once self::CONFIG;
+    }
+
+    public static function getInstance()
+    {
+        //check if initialized
+        if (self::$instance == null) {
+            //init
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    public function make(string $string, array $arr ){
+            $arrayConfig = include 'config.php';
+            if (array_key_exists($string, $arrayConfig)) {
+                if (class_exists($arrayConfig[$string])) {
+                    return new $arrayConfig[$string]($arr);
+                } else {
+                    throw new ClassNotFoundException();
+                }
+            } else {
+                throw new InvalidPostKeyException();
+            }
+        }
+
+    private function __clone()
+    {
+    }
 }

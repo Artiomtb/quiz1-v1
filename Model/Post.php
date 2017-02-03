@@ -1,5 +1,6 @@
 <?php
 
+namespace Model;
 /**
  * Created by PhpStorm.
  * User: shtoorman
