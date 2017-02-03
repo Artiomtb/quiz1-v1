@@ -4,7 +4,7 @@ namespace Model;
 
 /**
  * Interface Renderable
- * @package Model;
+ * @package Model
  */
 interface Renderable
 {

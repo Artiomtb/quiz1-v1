@@ -6,15 +6,15 @@ namespace Exceptions;
  * Class ClassNotFoundException
  * @package Exceptions
  */
-class ClassNotFoundException
+class ClassNotFoundException extends \Exception
 {
 
     /**
-     * Sends an error message when unable to locate a class
+     * Returns an error message when unable to locate a class
      */
-    public function getMessage()
+    public function __construct()
     {
-        echo "Unable to locate a specified class!";
+        return "Unable to locate a specified class!";
     }
-    
+
 }

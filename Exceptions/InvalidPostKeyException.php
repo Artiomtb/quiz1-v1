@@ -6,15 +6,15 @@ namespace Exceptions;
  * Class InvalidPostKeyException
  * @package Exceptions
  */
-class InvalidPostKeyException
+class InvalidPostKeyException extends \Exception
 {
 
     /**
-     * Sends an error message when invalid post key is used
+     * Returns an error message when invalid post key is used
      */
-    public function getMessage()
+    public function __construct()
     {
-        echo "test yyy";
+        return "The type of a post is invalid!";
     }
 
 }
