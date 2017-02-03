@@ -2,7 +2,7 @@
 
 use Exceptions\ClassNotFoundException;
 use Exceptions\InvalidPostKeyException;
-use Model\Renderable;
+use Interfaces\Renderable;
 
 require_once 'Autoloader.php';
 
