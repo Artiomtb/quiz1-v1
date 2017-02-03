@@ -14,32 +14,27 @@ abstract class Post
     private $author;
 
 
-    /**
-     * Post constructor.
-     * @param string $title
-     * @param string $content
-     * @param string $author
-     */
-    private function __construct(string $title, string $content, string $author)
+
+    public function __construct(array $list)
     {
-        $this->title = $title;
-        $this->content = $content;
-        $this->author = $author;
+        while (list($key, $val) = each($list)) {
+            $this->$key = $val;
+        }
     }
 
-    private function getTile(){
+    public function getTile(){
         return $this->title;
     }
 
-    private function getContent(){
+    public function getContent(){
         return $this->title;
     }
 
-    private function getAutor(){
+    public function getAutor(){
         return $this->title;
     }
 
-    function __toString()
+    public function __toString()
     {
         echo 'title'.$this->getTile();
         echo 'content'.$this->getContent();
