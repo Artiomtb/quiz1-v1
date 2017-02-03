@@ -1,12 +1,12 @@
 <?php
-
+namespace Model;
 /**
  * Created by PhpStorm.
  * User: shtoorman
  * Date: 01.02.17
- * Time: 20:26
+ * Time: 19:49
  */
-class Post
+class BlogPost extends Post
 {
 
 }
