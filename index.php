@@ -3,7 +3,6 @@
 use Exceptions\ClassNotFoundException;
 use Exceptions\InvalidPostKeyException;
 use Model\Renderable;
-
 require_once 'Autoloader.php';
 
 try {
@@ -38,6 +37,8 @@ try {
 } catch (InvalidPostKeyException $e) {
     die($e->getMessage());
 }
+
+
 ?>
 
 <!doctype html>
