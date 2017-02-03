@@ -3,8 +3,6 @@
 namespace Model;
 
 
-use Interfaces\Renderable;
-
 /**
  * Class AbstractPost
  *
