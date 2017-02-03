@@ -1,17 +1,22 @@
 <?php
+namespace Model;
 
 /**
  * Class Post
+ * @package Model
  */
-abstract class Post
+abstract class Post implements Exposable
 {
-
     /**
+     * Title of post
+     *
      * @var string
      */
     private $title;
 
     /**
+     * Content of post
+     *
      * @var string
      */
     private $content;
@@ -29,6 +34,8 @@ abstract class Post
     }
 
     /**
+     * Gets title of post
+     *
      * @return string
      */
     public function getTitle(): string
@@ -38,6 +45,8 @@ abstract class Post
 
 
     /**
+     * Sets title of post
+     *
      * @param string $title
      */
     public function setTitle(string $title)
@@ -46,6 +55,8 @@ abstract class Post
     }
 
     /**
+     * Gets content of post
+     *
      * @return string
      */
     public function getContent(): string
@@ -54,6 +65,8 @@ abstract class Post
     }
 
     /**
+     * Sets content of post
+     *
      * @param string $content
      */
     public function setContent(string $content)
@@ -61,7 +74,14 @@ abstract class Post
         $this->content = $content;
     }
 
-
-
+    /**
+     * Returns array of field of class
+     *
+     * @return array
+     */
+    public static function expose(): array
+    {
+        return get_class_vars(__CLASS__);
+    }
 
 }
