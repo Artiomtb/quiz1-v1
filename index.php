@@ -38,6 +38,7 @@ try {
 } catch (InvalidPostKeyException $e) {
     die($e->getMessage());
 }
+
 ?>
 
 <!doctype html>
