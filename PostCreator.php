@@ -2,7 +2,7 @@
 use Exceptions\ClassNotFoundException;
 use Exceptions\InvalidPostKeyException;
 use Model\Post;
-use config;
+
 /**
  * Created by PhpStorm.
  * User: shtoorman
@@ -19,7 +19,6 @@ class PostCreator
 
     private function __construct()
     {
-        $this->_conf = require_once self::CONFIG;
     }
 
     public static function getInstance()
