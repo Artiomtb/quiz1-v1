@@ -34,12 +34,13 @@ class PostCreator
         $this->config = Config::getConfig();
     }
 
+
     /**
+     * Makes class from class key and params
+     *
      * @param string $classKey
      * @param array $params
      * @return Post
-     * @throws ClassNotFoundException
-     * @throws FieldNotFoundException
      * @throws InvalidPostKeyException
      */
     public function make(string $classKey, array $params): Post
@@ -48,25 +49,7 @@ class PostCreator
 
             $class = $this->config[$classKey];
 
-            if (class_exists($class)) {
-
-                // Gets all field of the class and the parents classes
-                $classFields = $class::expose();
-
-                foreach ($params as $key => $param) {
-
-                    if (! array_key_exists($key, $classFields)) {
-
-                        //Error: The field '{$key}' of class '{$class}' does not exist
-                        throw new FieldNotFoundException("Error: The field '{$key}' of class '{$class}' does not exist");
-                    }
-
-                }
-
-            } else {
-                // Error: The class '{$className}' does not exist
-                throw new ClassNotFoundException("Error: The class '{$classKey}' does not exist");
-            }
+            $this->checkClass($class, $params);
 
         } else {
             // Error: The key '{$classKey}' does not exist in the config-file
@@ -105,5 +88,37 @@ class PostCreator
     private function __wakeup()
     {
         // must leave empty
+    }
+
+    /**
+     * Checks class is exist and has a fields
+     *
+     * @param string $class
+     * @param array $params
+     * @throws ClassNotFoundException
+     * @throws FieldNotFoundException
+     * @internal param string $classKey
+     */
+    private function checkClass(string $class, array $params)
+    {
+        if (class_exists($class)) {
+
+            // Gets all field of the class and the parents classes
+            $classFields = $class::expose();
+
+            foreach ($params as $key => $param) {
+
+                if (!array_key_exists($key, $classFields)) {
+
+                    //Error: The field '{$key}' of class '{$class}' does not exist
+                    throw new FieldNotFoundException("Error: The field '{$key}' of class '{$class}' does not exist");
+                }
+
+            }
+
+        } else {
+            // Error: The class '{$className}' does not exist
+            throw new ClassNotFoundException("Error: The class '{$class}' does not exist");
+        }
     }
 }
