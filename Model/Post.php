@@ -27,17 +27,17 @@ abstract class Post
     }
 
     public function getContent(){
-        return $this->title;
+        return $this->content;
     }
 
-    public function getAutor(){
-        return $this->title;
+    public function getAuthor(){
+        return $this->author;
     }
 
     public function __toString()
     {
         echo 'title'.$this->getTile();
         echo 'content'.$this->getContent();
-        echo 'autor'.$this->getAutor();
+        echo 'author'.$this->getAutor();
     }
 }
