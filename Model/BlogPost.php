@@ -22,25 +22,23 @@ class BlogPost implements Renderable
     /**
      * @return string
      */
-    public function render()
+    public function render() : string
     {
         $result = '';
 
         foreach ($this->body_post as $item => $value)
         {
             if ($item == 'title'){
-                $result = $result.'<b>'.$value.'</b>'.'</br>';
+                $result .= '<b>'.$value.'</b>'.'</br>';
             }
             else if ($item == 'author'){
-                $result = $result.'<i>'.$value.'</i>'.'</br>';
+                $result .= '<i>'.$value.'</i>'.'</br>';
             }
             else{
-                $result = $result.$value.'</br>';
+                $result .= $value.'</br>';
             }
         }
 
-        $result = $result.'<hr>';
-
-        return $result;
+        return $result .= '<hr>';
     }
 }

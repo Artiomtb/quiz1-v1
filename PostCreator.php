@@ -2,6 +2,9 @@
 
 require_once 'Autoloader.php';
 
+use Exceptions\InvalidPostKeyException;
+use Exceptions\ClassNotFoundException;
+
 /**
  * Class PostCreator
  */
@@ -19,7 +22,7 @@ class PostCreator
      */
     private function __construct()
     {
-        $this->post_name = require_once 'config.php';
+        $this->post_name = require 'config.php';
     }
 
     /**
@@ -44,15 +47,20 @@ class PostCreator
      * @param $post
      * @param $body
      * @return mixed
+     * @throws \Exceptions\ClassNotFoundException
      * @throws \Exceptions\InvalidPostKeyException
      */
     public function make($post, $body)
     {
-        if ($post != '')  {
-            return new $this->post_name[$post]($body);
+        if (array_key_exists($post,$this->post_name)){
+            if ($this->post_name[$post] != null)
+                return new $this->post_name[$post]($body);
+            else{
+                throw new ClassNotFoundException();
+            }
         }
         else{
-            throw new Exceptions\InvalidPostKeyException();
+            throw new InvalidPostKeyException();
         }
     }
 
