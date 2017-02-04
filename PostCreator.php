@@ -46,21 +46,15 @@ class PostCreator
      * Creates a post with specified parameters
      * @param string $post_type type of a post
      * @param array $content post content
-     * @return object $post specified post
+     * @return object specified post
      * @throws ClassNotFoundException the proper post type class does not exist
      * @throws InvalidPostKeyException post type was not correctly specified
      */
-    static function make(string $post_type, array $content)
+    static function make(string $post_type, array $content): \Model\Post
     {
         if (array_key_exists($post_type, self::$nspath)) {
             if (class_exists(self::$nspath[$post_type])) {
-                $post = new self::$nspath[$post_type]();
-
-                foreach ($content as $key => $value) {
-                    $post->{$key} = $value;
-                }
-
-                return $post;
+                return new self::$nspath[$post_type]($content);
             } else {
                 throw new ClassNotFoundException();
             }

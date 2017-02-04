@@ -6,17 +6,13 @@ namespace Model;
  * Class BlogPost
  * @package Model
  */
-class BlogPost implements Renderable
+class BlogPost extends Post
 {
 
     /**
-     * @var string $title post title
-     * @var string $content post content
      * @var string $author post author
      */
-    public $title;
-    public $content;
-    public $author;
+    protected $author;
 
     /**
      * Shows post contents
@@ -27,4 +23,5 @@ class BlogPost implements Renderable
         echo $this->content . '<br>';
         echo '<i>' . $this->author . '</i><br>';
     }
+
 }

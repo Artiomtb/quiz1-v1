@@ -6,15 +6,8 @@ namespace Model;
  * Class NewsPost
  * @package Model
  */
-class NewsPost implements Renderable
+class NewsPost extends Post
 {
-
-    /**
-     * @var string $title post title
-     * @var string $content post content
-     */
-    public $title;
-    public $content;
 
     /**
      * Shows post contents
