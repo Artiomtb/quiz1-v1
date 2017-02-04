@@ -53,7 +53,7 @@ class PostCreator
     public function make($post, $body)
     {
         if (array_key_exists($post,$this->post_name)){
-            if ($this->post_name[$post] != null)
+            if (class_exists($this->post_name[$post]))
                 return new $this->post_name[$post]($body);
             else{
                 throw new ClassNotFoundException();
