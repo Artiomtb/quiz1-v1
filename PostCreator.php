@@ -12,7 +12,7 @@ class PostCreator
      * @var array $nspath paths of different post type classes
      */
     protected static $instance;
-    static $nspath;
+    protected static $nspath;
 
     /**
      * PostCreator constructor
@@ -50,7 +50,7 @@ class PostCreator
      * @throws ClassNotFoundException the proper post type class does not exist
      * @throws InvalidPostKeyException post type was not correctly specified
      */
-    static function make(string $post_type, array $content): \Model\Post
+    public static function make(string $post_type, array $content): \Model\Post
     {
         if (array_key_exists($post_type, self::$nspath)) {
             if (class_exists(self::$nspath[$post_type])) {
