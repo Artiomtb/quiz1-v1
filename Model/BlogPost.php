@@ -14,9 +14,9 @@ class BlogPost implements Renderable
      * @var string $content post content
      * @var string $author post author
      */
-    var $title;
-    var $content;
-    var $author;
+    public $title;
+    public $content;
+    public $author;
 
     /**
      * Shows post contents

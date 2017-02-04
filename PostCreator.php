@@ -9,14 +9,17 @@ class PostCreator
 
     /**
      * @var object $instance instance of PostCreator
+     * @var array $nspath paths of different post type classes
      */
     protected static $instance;
+    static $nspath;
 
     /**
      * PostCreator constructor
      */
     private function __construct()
     {
+        self::$nspath = include 'config.php';
     }
 
     /**
@@ -49,13 +52,9 @@ class PostCreator
      */
     static function make(string $post_type, array $content)
     {
-        /**
-         * @var array $nspath paths of different post type classes
-         */
-        $nspath = include 'config.php';
-        if (array_key_exists($post_type, $nspath)) {
-            if (class_exists($nspath[$post_type])) {
-                $post = new $nspath[$post_type]();
+        if (array_key_exists($post_type, self::$nspath)) {
+            if (class_exists(self::$nspath[$post_type])) {
+                $post = new self::$nspath[$post_type]();
 
                 foreach ($content as $key => $value) {
                     $post->{$key} = $value;

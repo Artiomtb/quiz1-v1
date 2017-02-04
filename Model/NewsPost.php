@@ -13,8 +13,8 @@ class NewsPost implements Renderable
      * @var string $title post title
      * @var string $content post content
      */
-    var $title;
-    var $content;
+    public $title;
+    public $content;
 
     /**
      * Shows post contents
