@@ -7,7 +7,7 @@ namespace Model;
  * Date: 03.02.17
  * Time: 20:26
  */
-abstract class Post
+abstract class Post implements Renderable
 {
     private $title;
     private $content;
@@ -34,10 +34,16 @@ abstract class Post
         return $this->author;
     }
 
-    public function __toString()
-    {
+//    public function __toString()
+  //  {
+    //    echo 'title'.$this->getTile();
+    //    echo 'content'.$this->getContent();
+//        echo 'author'.$this->getAutor();
+//    }
+
+    public function render(){
         echo 'title'.$this->getTile();
         echo 'content'.$this->getContent();
-        echo 'author'.$this->getAutor();
+        echo 'author'.$this->getAuthor();
     }
 }

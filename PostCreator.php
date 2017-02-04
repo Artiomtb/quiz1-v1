@@ -30,7 +30,8 @@ class PostCreator
         }
         return self::$instance;
     }
-    public function make(string $string, array $arr ){
+    public function make(string $string, array $arr )
+    {
             $arrayConfig = include 'config.php';
             if (array_key_exists($string, $arrayConfig)) {
                 if (class_exists($arrayConfig[$string])) {
@@ -46,4 +47,6 @@ class PostCreator
     private function __clone()
     {
     }
+
+
 }
